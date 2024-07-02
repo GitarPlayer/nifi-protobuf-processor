@@ -38,6 +38,8 @@ import org.apache.nifi.processor.Relationship;
 import org.apache.nifi.processor.util.StandardValidators;
 import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.components.Validator;
+import org.apache.nifi.components.resource.ResourceCardinality;
+import org.apache.nifi.components.resource.ResourceType;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
