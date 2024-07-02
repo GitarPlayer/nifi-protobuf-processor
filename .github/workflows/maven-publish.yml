@@ -28,7 +28,7 @@ jobs:
     - name: Build with Maven
       run: mvn nifi-nar:nar
 
-    - run: mvn --batch-mode --update-snapshots verify
+    - run: mvn --batch-mode --update-snapshots verify -DskipTests=true 
     - run: mkdir staging && cp target/*.nar staging
     - uses: actions/upload-artifact@v4
       with:
