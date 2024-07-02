@@ -37,6 +37,7 @@ import org.apache.nifi.processor.ProcessorInitializationContext;
 import org.apache.nifi.processor.Relationship;
 import org.apache.nifi.processor.util.StandardValidators;
 import org.apache.nifi.expression.ExpressionLanguageScope;
+import org.apache.nifi.components.Validator;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
@@ -73,7 +74,7 @@ public abstract class ProtobufProcessor extends AbstractProcessor {
             .description("Path to the Protocol Buffers schema to use to encode or decode the data. If set, this schema will " +
                     "be used when the flowfile protobuf.schemaPath is missing.")
             .expressionLanguageSupported(ExpressionLanguageScope.NONE)
-            .addValidator(StandardValidators.createURLorFileValidator())
+            .identifiesExternalResource(ResourceCardinality.SINGLE, ResourceType.FILE, ResourceType.DIRECTORY, ResourceType.URL)
             .build();
 
     static final PropertyDescriptor COMPILE_SCHEMA = new PropertyDescriptor.Builder()
@@ -84,7 +85,7 @@ public abstract class ProtobufProcessor extends AbstractProcessor {
             .description("Set this property to true if the given schema file must be compiled using protoc before " +
                     "processing the data. It is useful if the given schema file is in .proto format. Try to always use " +
                     "precompiled .desc schema whenever possible, since it is more performant.")
-            .addValidator(StandardValidators.BOOLEAN_VALIDATOR)
+            .addValidator(Validator.BOOLEAN_VALIDATOR)
             .build();
 
 
