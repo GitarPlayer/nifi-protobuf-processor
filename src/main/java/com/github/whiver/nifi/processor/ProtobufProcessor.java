@@ -36,7 +36,7 @@ import org.apache.nifi.processor.AbstractProcessor;
 import org.apache.nifi.processor.ProcessorInitializationContext;
 import org.apache.nifi.processor.Relationship;
 import org.apache.nifi.processor.util.StandardValidators;
-
+import org.apache.nifi.expression.ExpressionLanguageScope;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
@@ -72,7 +72,7 @@ public abstract class ProtobufProcessor extends AbstractProcessor {
             .required(false)
             .description("Path to the Protocol Buffers schema to use to encode or decode the data. If set, this schema will " +
                     "be used when the flowfile protobuf.schemaPath is missing.")
-            .expressionLanguageSupported(false)
+            .expressionLanguageSupported(ExpressionLanguageScope.NONE)
             .addValidator(StandardValidators.createURLorFileValidator())
             .build();
 
