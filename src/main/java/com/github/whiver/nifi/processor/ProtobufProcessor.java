@@ -87,7 +87,7 @@ public abstract class ProtobufProcessor extends AbstractProcessor {
             .description("Set this property to true if the given schema file must be compiled using protoc before " +
                     "processing the data. It is useful if the given schema file is in .proto format. Try to always use " +
                     "precompiled .desc schema whenever possible, since it is more performant.")
-            .addValidator(Validator.BOOLEAN_VALIDATOR)
+            .addValidator(StandardValidators.BOOLEAN_VALIDATOR)
             .build();
 
 
